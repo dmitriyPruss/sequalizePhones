@@ -5,7 +5,7 @@ const phoneRouter = Router();
 
 phoneRouter.get('/', phoneController.getPhones);
 phoneRouter.get('/:phoneId', phoneController.getPhoneById);
-phoneRouter.post('/:phoneId', phoneController.createPhone);
+phoneRouter.post('/', phoneController.createPhone);
 phoneRouter.put('/:phoneId', phoneController.updatePhone);
 phoneRouter.delete('/:phoneId', phoneController.deletePhone);
 

@@ -1,0 +1,49 @@
+GET http://localhost:5000/api/phones HTTP/1.1
+
+
+###
+GET http://localhost:5000/api/phones/2 HTTP/1.1
+
+###
+POST http://localhost:5000/api/phones HTTP/1.1
+Content-Type: application/json
+
+{
+  "model": "Xiaomi",
+  "brand": "Note9",
+  "manufacturedYear": 2020,
+  "RAMsize": 128,
+  "CPU": "Mediatekheliog85",
+  "screenDiagonal": 6.5,
+  "isNFC": true
+}
+
+###
+
+POST http://localhost:5000/api/phones HTTP/1.1
+Content-Type: application/json
+
+{
+  "model": "Xiaomi",
+  "brand": "Note10",
+  "manufacturedYear": 2021,
+  "RAMsize": 256,
+  "CPU": "Qualcommsnapdragon732g",
+  "screenDiagonal": 6.7,
+  "isNFC": true
+}
+
+###
+
+POST http://localhost:5000/api/phones HTTP/1.1
+Content-Type: application/json
+
+{
+  "model": "Samsung",
+  "brand": "Galaxys21ultra",
+  "manufacturedYear": 2021,
+  "RAMsize": 512,
+  "CPU": "Exynos 2100",
+  "screenDiagonal": 6.8,
+  "isNFC": true
+}
