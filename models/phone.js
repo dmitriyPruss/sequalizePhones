@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
         validate: {
-          is: /^[A-Z][a-z0-9]{1,30}$/
+          is: /^[A-Za-z0-9\s]{1,30}$/
         }
       },
       manufacturedYear: {
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          is: /^[A-Z][a-z0-9\s]{1,30}$/
+          is: /^[A-Za-z0-9\s]{1,30}$/
         }
       },
       screenDiagonal: {

@@ -6,7 +6,7 @@ module.exports.getPhones = async (req, res, next) => {
     const foundPhones = await Phone.findAll({
       raw: true,
       attributes: {
-        exclude: ['id', 'createdAt', 'updatedAt']
+        exclude: ['createdAt', 'updatedAt']
       },
       limit: 7
     });
@@ -55,5 +55,65 @@ module.exports.createPhone = async (req, res, next) => {
   }
 };
 
-module.exports.updatePhone = async (req, res) => {};
-module.exports.deletePhone = async (req, res) => {};
+module.exports.updatePhone = async (req, res, next) => {
+  const {
+    params: { phoneId },
+    body
+  } = req;
+
+  try {
+    const [updatedPhoneCount, [updatedPhoneData]] = await Phone.update(body, {
+      where: { id: phoneId },
+      returning: true
+    });
+
+    if (updatedPhoneCount) {
+      const sendedPhone = _.pick(updatedPhoneData.get(), [
+        'model',
+        'brand',
+        'manufacturedYear',
+        'CPU'
+      ]);
+      res.status(200).send(sendedPhone);
+    }
+
+    res.status(404).send('Phone not found!');
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.updateOrCreatePhone = async (req, res, next) => {
+  const {
+    params: { phoneId },
+    body
+  } = req;
+
+  try {
+    const [updatedPhoneCount] = await Phone.update(body, {
+      where: { id: phoneId }
+    });
+
+    updatedPhoneCount
+      ? res.status(204).send()
+      : ((req.body.id = phoneId), next());
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.deletePhone = async (req, res, next) => {
+  const {
+    params: { phoneId }
+  } = req;
+
+  try {
+    const deletedPhone = await Phone.destroy({ where: { id: phoneId } });
+
+    deletedPhone
+      ? res.status(204).send()
+      : res.status(404).send('Phone not found');
+  } catch (error) {
+    next(error);
+  }
+};
