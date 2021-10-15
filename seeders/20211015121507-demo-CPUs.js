@@ -1,6 +1,6 @@
 'use strict';
 
-const cpusData = require('./../cpus.json');
+const cpusData = require('./../initialDBdata/cpus.json');
 const cpus = cpusData.map(cpu => ({
   ...cpu,
   createdAt: new Date(),

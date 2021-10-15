@@ -1,6 +1,6 @@
 'use strict';
 
-const phonesData = require('../phones.json');
+const phonesData = require('./../initialDBdata/phones.json');
 const phones = phonesData.map(phone => ({
   ...phone,
   createdAt: new Date(),
