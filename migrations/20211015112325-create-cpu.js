@@ -1,40 +1,28 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Phones', {
+    await queryInterface.createTable('CPUs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      model: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      brand: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      manufacturedYear: {
+      num_of_cores: {
         type: Sequelize.SMALLINT,
         allowNull: false
       },
-      RAMsize: {
-        type: Sequelize.SMALLINT,
-        allowNull: false
-      },
-      CPU: {
+      frequency: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      screenDiagonal: {
-        type: Sequelize.DECIMAL,
+      GPU: {
+        type: Sequelize.STRING,
         allowNull: false
-      },
-      isNFC: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true
       },
       createdAt: {
         allowNull: false,
@@ -47,6 +35,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Phones');
+    await queryInterface.dropTable('CPUs');
   }
 };

@@ -32,7 +32,7 @@ module.exports.getPhoneById = async (req, res, next) => {
 
     foundPhone
       ? res.status(200).send(foundPhone)
-      : res.status(404).send('Sorry, phone not found');
+      : res.status(404).send('Sorry, this phone not found');
   } catch (error) {
     next(error);
   }

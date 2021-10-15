@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate (models) {
-      // define association here
+      Phone.belongsTo(models.CPU);
     }
   }
   Phone.init(
@@ -23,13 +23,12 @@ module.exports = (sequelize, DataTypes) => {
       brand: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         validate: {
           is: /^[A-Za-z0-9\s]{1,30}$/
         }
       },
       manufacturedYear: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.SMALLINT,
         allowNull: false,
         validate: {
           min: 2010,
@@ -37,13 +36,13 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       RAMsize: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.SMALLINT,
         allowNull: false,
         validate: {
-          isIn: [[16, 32, 64, 128, 256, 512, 1024]]
+          isIn: [[1, 2, 3, 4, 6, 8, 16, 32, 64]]
         }
       },
-      CPU: {
+      CPUname: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -64,6 +63,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     {
+      indexes: [
+        {
+          name: 'Phone_spec',
+          unique: true,
+          fields: ['model', 'brand', 'manufacturedYear', 'RAMsize']
+        }
+      ],
       sequelize,
       modelName: 'Phone'
     }
