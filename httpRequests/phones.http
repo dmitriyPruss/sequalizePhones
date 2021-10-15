@@ -12,7 +12,7 @@ Content-Type: application/json
   "brand": "Note 9",
   "manufacturedYear": 2020,
   "RAMsize": 8,
-  "CPU": "MediaTek Helio G85",
+  "CPUname": "MediaTek Helio G85",
   "screenDiagonal": 6.5,
   "isNFC": true,
   "CPU_id": 4
@@ -36,7 +36,7 @@ Content-Type: application/json
   "brand": "Galaxy Z Flip",
   "manufacturedYear": 2021,
   "RAMsize": 32,
-  "CPU": "Qualcomm Snapdragon",
+  "CPUname": "Qualcomm Snapdragon",
   "screenDiagonal": 6.7,
   "isNFC": true,
   "CPU_id": 2
@@ -44,3 +44,23 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:5000/api/phones/2
+
+
+###
+GET http://localhost:5000/api/phones?processorId=2 HTTP/1.1
+
+
+###
+
+POST http://localhost:5000/api/phones?processorId=2 HTTP/1.1
+Content-Type: application/json
+
+{
+  "model": "Xiaomi",
+  "brand": "Note 8",
+  "manufacturedYear": 2020,
+  "RAMsize": 8,
+  "screenDiagonal": 5.8,
+  "isNFC": true,
+  "CPU_id": 2
+}

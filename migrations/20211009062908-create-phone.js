@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.SMALLINT,
         allowNull: false
       },
-      CPU: {
+      CPUname: {
         type: Sequelize.STRING,
         allowNull: false
       },

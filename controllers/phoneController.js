@@ -1,8 +1,29 @@
 const { Phone } = require('./../models');
+const { CPU } = require('./../models');
 const _ = require('lodash');
 
 module.exports.getPhones = async (req, res, next) => {
   try {
+    if (req.query.processorId) {
+      const {
+        query: { processorId }
+      } = req;
+
+      const sortedPhones = await Phone.findAll({
+        raw: true,
+        attributes: {
+          exclude: ['createdAt', 'updatedAt', 'CPU_id']
+        },
+        where: { CPU_id: processorId },
+        limit: 5
+      });
+
+      // const cpu = await sortedPhones[0].getCPU();
+      // console.log(`cpu`, cpu);
+
+      res.status(200).send(sortedPhones);
+    }
+
     const foundPhones = await Phone.findAll({
       raw: true,
       attributes: {
@@ -40,8 +61,27 @@ module.exports.getPhoneById = async (req, res, next) => {
 
 module.exports.createPhone = async (req, res, next) => {
   const { body } = req;
+  console.log(`req`, req.query);
 
   try {
+    if (req.query.processorId) {
+      const {
+        query: { processorId }
+      } = req;
+
+      const [selectedCPU] = await CPU.findAll({
+        raw: true,
+
+        where: { id: processorId }
+      });
+
+      console.log(`selectedCPU`, selectedCPU);
+
+      body.CPUname = selectedCPU.name;
+      const cpuPhones = await selectedCPU.getPhones();
+      console.log(`selectedCPU.getPhones()`, cpuPhones);
+    }
+
     const createdPhone = await Phone.create(body);
     const sendedPhone = _.omit(createdPhone.get(), [
       'id',
