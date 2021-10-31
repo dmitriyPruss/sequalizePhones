@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          is: /^[A-Z][a-z0-9]{1,20}$/
+          is: /^[A-Za-z0-9]{1,20}$/
         }
       },
       brand: {
@@ -44,13 +44,6 @@ module.exports = (sequelize, DataTypes) => {
           isIn: [[1, 2, 3, 4, 6, 8, 16, 32, 64]]
         }
       },
-      CPUname: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          is: /^[A-Za-z0-9\s]{1,30}$/
-        }
-      },
       screenDiagonal: {
         type: DataTypes.DECIMAL,
         allowNull: false,
@@ -65,13 +58,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     {
-      indexes: [
-        {
-          name: 'Phone_spec',
-          unique: true,
-          fields: ['model', 'brand', 'manufacturedYear', 'RAMsize']
-        }
-      ],
       sequelize,
       modelName: 'Phone'
     }

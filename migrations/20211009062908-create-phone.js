@@ -24,10 +24,6 @@ module.exports = {
         type: Sequelize.SMALLINT,
         allowNull: false
       },
-      CPUname: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       screenDiagonal: {
         type: Sequelize.DECIMAL,
         allowNull: false

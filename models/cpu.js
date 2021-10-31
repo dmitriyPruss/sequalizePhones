@@ -47,13 +47,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     {
-      indexes: [
-        {
-          name: 'CPU_spec',
-          unique: true,
-          fields: ['name', 'num_of_cores', 'frequency']
-        }
-      ],
       sequelize,
       modelName: 'CPU'
     }

@@ -74,7 +74,7 @@ module.exports.updatePhone = async (req, res, next) => {
         'manufacturedYear',
         'CPU'
       ]);
-      res.status(200).send(sendedPhone);
+      return res.status(200).send(sendedPhone);
     }
 
     res.status(404).send('Phone not found!');

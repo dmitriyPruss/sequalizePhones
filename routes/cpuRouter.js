@@ -3,9 +3,11 @@ const { cpuController } = require('../controllers');
 
 const cpuRouter = Router();
 
+cpuRouter.route('/').get(cpuController.getCPUs);
+
 cpuRouter
-  .route('/')
-  .get(cpuController.getCPUs)
+  .route('/:cpuId/phones')
+  .get(cpuController.getPhonesByCPU)
   .post(cpuController.createPhoneByCPU);
 
 module.exports = cpuRouter;
