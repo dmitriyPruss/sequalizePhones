@@ -25,7 +25,7 @@ module.exports = {
         allowNull: false
       },
       screenDiagonal: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.REAL,
         allowNull: false
       },
       isNFC: {

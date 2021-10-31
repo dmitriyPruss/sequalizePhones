@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       screenDiagonal: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.REAL,
         allowNull: false,
         validate: {
           min: 2.5,
