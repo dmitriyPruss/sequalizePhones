@@ -2,7 +2,7 @@
 GET http://localhost:5000/api/cpus HTTP/1.1
 
 ###
-GET http://localhost:5000/api/cpus/2/phones HTTP/1.1
+GET http://localhost:5000/api/cpus/3/phones HTTP/1.1
 
 ###
 POST http://localhost:5000/api/cpus/2/phones HTTP/1.1
@@ -10,7 +10,7 @@ Content-Type: application/json
 
 {
   "model": "Mi",
-  "brand": "X999",
+  "brand": "1000",
   "manufacturedYear": 2019,
   "RAMsize": 8,
   "screenDiagonal": 5.6,

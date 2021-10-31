@@ -38,34 +38,26 @@ module.exports.getPhonesByCPU = async (req, res, next) => {
         exclude: ['createdAt', 'updatedAt', 'CPU_id']
       }
     });
-
     res.status(200).send(sortedPhonesByCPU);
     // ----------------------------------------------------
-
     // 2 variant - MAGIC METHODS --------------------------
     // const [sortedCPU] = await CPU.findAll({
     //   where: { id: cpuId }
     // });
-
-    // const foundPhones = await sortedCPU.getPhones();
-
+    // const foundPhones = await sortedCPU.getPhones({
+    //   raw: true,
+    //   attributes: {
+    //     exclude: ['createdAt', 'updatedAt', 'CPU_id']
+    //   }
+    // });
     // const sendedPhones = foundPhones.map(phone => {
-    //   const sendedPhone = _.omit(phone.dataValues, [
-    //     'id',
-    //     'createdAt',
-    //     'updatedAt',
-    //     'CPU_id'
-    //   ]);
-
-    //   sendedPhone.CPU_params = _.omit(sortedCPU.dataValues, [
+    //   phone.CPU_params = _.omit(sortedCPU.dataValues, [
     //     'id',
     //     'createdAt',
     //     'updatedAt'
     //   ]);
-
-    //   return sendedPhone;
+    //   return phone;
     // });
-
     // res.status(200).send(sendedPhones);
     // ----------------------------------------------------
   } catch (error) {
